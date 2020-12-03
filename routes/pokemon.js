@@ -45,6 +45,20 @@ const userRoutes = (app, fs) => {
         },
             true);
     });
+
+    app.get('/pokemon/:name', (req, res) => {
+        readFile(data => {
+            const userName = req.params["name"];
+            console.log(userName);
+            const foundName = data.filter(obj => obj.Name === userName);
+            console.log(foundName);
+            res.send(foundName);
+        },
+            true);
+    });
 };
+
+// Search pokemon by Name
+
 
 module.exports = userRoutes;
